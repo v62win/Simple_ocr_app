@@ -54,8 +54,8 @@ class _MyHomePageState extends State<MyHomePage> {
   bool _isListening = false;
 
   // Define percentage for focus area size
-  final double focusAreaWidthPercent = 0.7; // 70% of preview width
-  final double focusAreaHeightPercent = 0.2; // 20% of preview height
+  final double focusAreaWidthPercent = 0.9; // 90% of preview width
+  final double focusAreaHeightPercent = 0.1; // 10% of preview height
 
   @override
   void initState() {
@@ -157,19 +157,18 @@ class _MyHomePageState extends State<MyHomePage> {
     final textRecognizer = TextRecognizer();
     final RecognizedText recognizedText = await textRecognizer.processImage(inputImage);
 
+    // Get the full text from the recognized text blocks
     String scannedText = recognizedText.text;
 
-    // Update the text field with the scanned text
+    // Update the text field with the full scanned text
     setState(() {
       _textController.text = scannedText;
     });
-    print(_textController);
-
-
 
     // Add the scanned text to the stream as well
     controller.add(scannedText);
   }
+
 
   @override
   Widget build(BuildContext context) {
